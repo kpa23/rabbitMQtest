@@ -11,30 +11,7 @@ public class Main {
     private final static String HOST = "localhost";
     private final static int PORT = 5672;
 
-    public static void produce() {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(HOST);
-        factory.setPort(PORT);
-        try {
-            Channel channel = factory.newConnection().createChannel();
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-            // produce 10 messages
-            for (int i = 0; i < 10; i++) {
-                String message = "{\"oderId\":" + ThreadLocalRandom.current().nextInt(
-                        1000, 2000) + ", \"items\":[{\"id\":" + ThreadLocalRandom.current().nextInt(
-                        1000, 2000) + "},{\"id\":" + ThreadLocalRandom.current().nextInt(
-                        1, 10) + "}]}";
-
-                channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-                System.out.println("Produced: " + message);
-            }
-            channel.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public static void consume() {
         ConnectionFactory factory = new ConnectionFactory();
@@ -65,7 +42,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            produce();
+            Produce.produce();
             consume();
         } catch (Exception e) {
             e.printStackTrace();

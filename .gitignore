@@ -1,0 +1,9 @@
+/.idea/.gitignore
+/.idea/compiler.xml
+/.idea/sonarlint/issuestore/index.pb
+/.idea/jarRepositories.xml
+/target/classes/testMQ/Main$1.class
+/target/classes/testMQ/Main.class
+/.idea/misc.xml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
