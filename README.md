@@ -1,0 +1,3 @@
+# rabbitMQtest
+
+ docker-compose up
